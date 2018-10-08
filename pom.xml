@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <groupId>com.FluentPageObjects.demo</groupId>
+    <artifactId>TX-selenium-testng-base</artifactId>
+    <version>DEV-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Fluent Page Objects</name>
+    <description>Example TXProject Fluent Page Objects</description>
+    <url>http://www.FluentPageObjects.com</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- Dependency versions -->
+        <selenium.version>3.14.0</selenium.version>
+        <testng.version>6.14.3</testng.version>
+        <assertj-core.version>3.10.0</assertj-core.version>
+        <query.version>1.2.0</query.version>
+        <!-- Plugin versions -->
+        <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+        <!-- Configurable variables -->
+        <threads>1</threads>
+        <browser>chrome</browser>
+        <overwrite.binaries>false</overwrite.binaries>
+        <headless>false</headless>
+        <remote>false</remote>
+        <seleniumGridURL/>
+        <platform/>
+        <browserVersion/>
+        <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
+        <chrome.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/osx/googlechrome/64bit/chromedriver</chrome.driver>
+        <gecko.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/osx/marionette/64bit/geckodriver</gecko.driver>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+                <version>${maven-compiler-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.lazerycode.selenium</groupId>
+            <artifactId>query</artifactId>
+            <version>${query.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>selenium</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.lazerycode.selenium</groupId>
+                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                        <version>${driver-binary-downloader-maven-plugin.version}</version>
+                        <configuration>
+                            <rootStandaloneServerDirectory>${project.basedir}/src/test/resources/selenium_standalone_binaries</rootStandaloneServerDirectory>
+                            <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
+                            <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
+                            <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>selenium</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven-failsafe-plugin.version}</version>
+                        <configuration>
+                            <parallel>methods</parallel>
+                            <threadCount>${threads}</threadCount>
+                            <systemPropertyVariables>
+                                <browser>${browser}</browser>
+                                <headless>${headless}</headless>
+                                <remoteDriver>${remote}</remoteDriver>
+                                <gridURL>${seleniumGridURL}</gridURL>
+                                <desiredPlatform>${platform}</desiredPlatform>
+                                <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
+                                <screenshotDirectory>${screenshotDirectory}</screenshotDirectory>
+                                <!--Set properties passed in by the driver binary downloader-->
+                                <webdriver.chrome.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/osx/googlechrome/64bit/chromedriver</webdriver.chrome.driver>
+                                <webdriver.gecko.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/osx/marionette/64bit/geckodriver</webdriver.gecko.driver>
+                            </systemPropertyVariables>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
