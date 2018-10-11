@@ -2,6 +2,7 @@ package com.truextend.Tests;
 
 import com.truextend.Listeners.ScreenshotListener;
 import com.truextend.PageObjects.GoogleHomePage;
+import com.truextend.PageObjects.staticGoogleHomePage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -24,6 +25,14 @@ public class FluentSearchTests extends TestBase {
                 .TypeIn("Cheese!")
                 .HitEnter()
                 .VerifyResultsPageTitleContains("Cheese");
-    }
+        }
 
+    @Test
+    public void staticFluentGoogleCheeseSearch(){
+        staticGoogleHomePage.NavigateTo("http://www.google.com")
+                .SelectSearchBox()
+                .TypeIn("Cheese!")
+                .HitEnter()
+                .VerifyResultsPageTitleContains("Cheese");
+    }
 }
