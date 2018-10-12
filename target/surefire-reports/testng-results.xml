@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="com.truextend.Tests.TestBase" duration-ms="4" started-at="2018-10-11T21:48:28Z" finished-at="2018-10-11T21:48:28Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="4" started-at="2018-10-11T21:48:28Z" finished-at="2018-10-11T21:48:28Z">
+      <class name="com.truextend.Tests.TestBase">
+        <test-method status="PASS" signature="instantiateDriverObject()[pri:0, instance:com.truextend.Tests.TestBase@45820e51]" name="instantiateDriverObject" is-config="true" duration-ms="19" started-at="2018-10-11T21:48:28Z" finished-at="2018-10-11T21:48:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- instantiateDriverObject -->
+        <test-method status="PASS" signature="closeDriverObjects()[pri:0, instance:com.truextend.Tests.TestBase@45820e51]" name="closeDriverObjects" is-config="true" duration-ms="1" started-at="2018-10-11T21:48:28Z" finished-at="2018-10-11T21:48:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeDriverObjects -->
+      </class> <!-- com.truextend.Tests.TestBase -->
+    </test> <!-- Command line test -->
+  </suite> <!-- com.truextend.Tests.TestBase -->
+</testng-results>

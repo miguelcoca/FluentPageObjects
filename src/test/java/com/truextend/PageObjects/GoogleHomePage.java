@@ -35,6 +35,7 @@ public class GoogleHomePage extends BasePage {
 
     public GoogleHomePage VerifyResultsPageTitleContains(String expected){
         Assert.assertTrue(driver.getTitle().contains(expected));
+
         return this;
     }
 

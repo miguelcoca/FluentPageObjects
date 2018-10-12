@@ -25,5 +25,4 @@ public class FluentSearchTests extends TestBase {
                 .HitEnter()
                 .VerifyResultsPageTitleContains("Cheese");
     }
-
 }
