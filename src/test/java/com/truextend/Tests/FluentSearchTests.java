@@ -33,7 +33,7 @@ public class FluentSearchTests extends TestBase {
     @Test
     public void fluentGITLogin() throws Exception{
 
-        login.NavigateTo("https://github.com/login").FillUsername().FillPassword().HitSignIn().VerifyResultsPageTitleContains();
+        login.NavigateTo("https://github.com/login").FillUsername("priscila.torrico@truextend.com").FillPassword("Hobsonspriscila1").HitSignIn().VerifyResultsPageTitleContains();
     }
 
 }

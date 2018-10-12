@@ -13,13 +13,13 @@ public class GITLogin extends BasePage {
 
         public GITLogin() { }
 
-        public com.truextend.PageObjects.GITLogin FillUsername(){
-            username.findWebElement().sendKeys("priscila.torrico@truextend.com");
+        public com.truextend.PageObjects.GITLogin FillUsername(String usernameValue){
+            username.findWebElement().sendKeys(usernameValue);
             return this;
         }
 
-        public com.truextend.PageObjects.GITLogin FillPassword(){
-            password.findWebElement().sendKeys("Hobsonspriscila1");
+        public com.truextend.PageObjects.GITLogin FillPassword(String passwordValue){
+            password.findWebElement().sendKeys(passwordValue);
             return this;
         }
 
