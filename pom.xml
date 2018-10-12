@@ -35,7 +35,7 @@
         <platform/>
         <browserVersion/>
         <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
-        <chrome.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/osx/googlechrome/64bit/chromedriver</chrome.driver>
+        <chrome.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/windows/googlechrome/64bit/chromedriver.exe</chrome.driver>
         <gecko.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/osx/marionette/64bit/geckodriver</gecko.driver>
     </properties>
     <build>
@@ -127,7 +127,7 @@
                                 <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
                                 <screenshotDirectory>${screenshotDirectory}</screenshotDirectory>
                                 <!--Set properties passed in by the driver binary downloader-->
-                                <webdriver.chrome.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/osx/googlechrome/64bit/chromedriver</webdriver.chrome.driver>
+                                <webdriver.chrome.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/windows/googlechrome/64bit/chromedriver.exe</webdriver.chrome.driver>
                                 <webdriver.gecko.driver>${project.basedir}/src/test/resources/selenium_standalone_binaries/osx/marionette/64bit/geckodriver</webdriver.gecko.driver>
                             </systemPropertyVariables>
                         </configuration>
