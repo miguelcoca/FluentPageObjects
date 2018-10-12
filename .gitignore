@@ -1,0 +1,12 @@
+**/.gradle
+**/build
+**/out
+**/target
+**/.idea
+**/idea
+**/test-report
+**/.DS_Store
+**/local_config.properties
+/src/test/resources/Captcha/*.png
+/src/test/resources/selenium_standalone_zips
+/src/test/resources/selenium_standalone_binaries
